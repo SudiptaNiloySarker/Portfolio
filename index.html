@@ -572,7 +572,23 @@ if(f.action.indexOf('YOUR_FORM_ID')>-1){e.preventDefault();st.textContent='This 
 e.preventDefault();st.textContent='Sending…';
 fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}}).then(function(r){if(r.ok){f.reset();st.textContent='Message sent. Thank you.'}else{st.textContent='Sending failed. Please email me directly.'}}).catch(function(){st.textContent='Sending failed. Please email me directly.'});
 });
-var tm=document.querySelector('.term');if('IntersectionObserver' in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){tm.classList.add('go');o.disconnect()}}).observe(tm)}else tm.classList.add('go');
+// Terminal typing animation
+var tm = document.querySelector('.term');
+
+if (tm) {
+    if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries, observer) {
+            if (entries[0].isIntersecting) {
+                tm.classList.add('go');
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(tm);
+    } else {
+        tm.classList.add('go');
+    }
+}
 
 /* >>> PASTE LATER JS HERE (footer year and contact form) <<< */
 </script>
