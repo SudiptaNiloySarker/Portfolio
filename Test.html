@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Text shown on the browser tab and in Google results -->
+<title>Sudipta Niloy Sarker | CSE Graduate, AI/ML and Network Engineer</title>
+<meta name="description" content="Portfolio of Sudipta Niloy Sarker, a Computer Science and Engineering graduate from AIUB working across AI and machine learning, data science and network engineering.">
+<meta name="theme-color" content="#07070D">
+
+<!-- Fonts from Google: Space Grotesk (headings, body) and Space Mono (code-style text) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap">
+
+<style>
+/* ========== 1. COLORS AND FONTS (change colors here) ========== */
+:root{
+  --bg:#07070D;      /* page background */
+  --bg2:#0E0E1A;     /* card background */
+  --bd:#2A2A44;      /* border lines */
+  --tx:#F5F5FA;      /* main text */
+  --mut:#B4B4C8;     /* softer grey text */
+  --p:#FF2E93;       /* neon pink */
+  --c:#00E5FF;       /* neon cyan */
+  --l:#B6FF3B;       /* neon lime */
+  --on:#07070D;      /* text color used on top of lime */
+  --d:'Space Grotesk',system-ui,sans-serif;
+  --m:'Space Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+/* Light theme: same names, different colors. Used when the theme button is pressed */
+[data-theme=light]{--bg:#F4F4FA;--bg2:#fff;--bd:#CFCFE3;--tx:#12121C;--mut:#4A4A5E;--p:#C2185B;--c:#006C85;--l:#9BE000;color-scheme:light}
+
+/* ========== 2. BASIC PAGE SETTINGS ========== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}  /* smooth scrolling, stops below the sticky header */
+body{margin:0;background:var(--bg);color:var(--tx);font:400 17px/1.7 var(--d);overflow-x:hidden}
+a{color:inherit}
+p{margin:0 0 1em}
+:focus-visible{outline:2px solid var(--l);outline-offset:3px}  /* visible outline for keyboard users */
+
+/* Moving grid behind the whole page */
+body::before{content:'';position:fixed;inset:0;z-index:-1;
+  background-image:linear-gradient(color-mix(in srgb,var(--c) 11%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--p) 11%,transparent) 1px,transparent 1px);
+  background-size:56px 56px;animation:gr 8s linear infinite}
+@keyframes gr{to{background-position:0 56px,56px 0}}
+
+/* Thin scanline effect on top of the page (hidden in light theme) */
+body::after{content:'';position:fixed;inset:0;z-index:50;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0,rgba(0,0,0,.14) 1px,transparent 1px,transparent 3px)}
+[data-theme=light] body::after{display:none}
+
+/* "Skip to content" link, visible only when using the keyboard */
+.skip{position:absolute;left:-999px}
+.skip:focus{left:12px;top:12px;background:var(--l);color:var(--on);padding:8px 14px;z-index:60}
+
+/* .w keeps content centered with a maximum width */
+.w{max-width:1120px;margin:0 auto;padding-inline:24px}
+
+/* ========== 3. SCROLLING TICKER AT THE VERY TOP ========== */
+.mqw{background:var(--l);color:var(--on);overflow:hidden;font:700 14px var(--m);padding:10px 0}
+.mq{display:flex;width:max-content;animation:mq 24s linear infinite}
+.mq span{white-space:pre}
+@keyframes mq{to{transform:translateX(-50%)}}  /* moves left by half = the second copy takes over, so it loops */
+
+/* ========== 4. STICKY HEADER AND MENU ========== */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:2px solid var(--c)}
+header .w{display:flex;align-items:center;gap:20px;height:64px}
+.lg{font:700 16px var(--m);text-decoration:none;white-space:nowrap;color:var(--l)}
+nav{display:flex;gap:22px;font:400 14px var(--m);overflow-x:auto;scrollbar-width:none;margin-left:auto}
+nav a{color:var(--mut);text-decoration:none;white-space:nowrap;padding:10px 0}
+nav a:hover{color:var(--c)}
+#tt{flex:none;width:44px;height:44px;border:2px solid var(--c);background:transparent;color:var(--c);cursor:pointer;display:grid;place-items:center}  /* theme button */
+
+/* ========== 5. BUTTONS ========== */
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border:2px solid var(--c);background:transparent;color:var(--c);font:700 15px var(--m);text-decoration:none;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--p)}
+.pri{background:var(--l);color:var(--on);border-color:var(--l)}  /* main (lime) button */
+.pulse{animation:pu 1.6s ease-in-out infinite}                    /* pulsing ring around a button */
+@keyframes pu{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--l) 70%,transparent)}70%,100%{box-shadow:0 0 0 16px transparent}}
+
+/* ========== 6. HERO (first screen) ========== */
+.hero{position:relative;display:grid;grid-template-columns:1.5fr .7fr;gap:48px;align-items:center;padding-block:96px 72px}
+.hero>*{position:relative;z-index:1}
+h1{font-size:clamp(44px,8.4vw,104px);font-weight:700;letter-spacing:-.03em;line-height:.98;margin:0 0 20px;text-transform:uppercase;animation:gl 2.6s infinite steps(1)}
+/* Glitch effect: the name flickers with pink and cyan shadows */
+@keyframes gl{
+  0%,100%{text-shadow:4px 0 var(--c),-4px 0 var(--p)}
+  20%{text-shadow:-6px 2px var(--c),6px -2px var(--p);transform:translateX(3px)}
+  40%{text-shadow:3px -3px var(--c),-3px 3px var(--p)}
+  60%{text-shadow:-2px 0 var(--l),2px 0 var(--p);transform:translateX(-4px)}
+  80%{text-shadow:5px 2px var(--c),-5px -2px var(--p)}}
+.hl{font:700 clamp(15px,2vw,19px)/1.5 var(--m);color:var(--c);margin:0 0 24px}   /* the headline under the name */
+.in{max-width:560px;color:var(--mut);margin:0 0 32px}                              /* short intro paragraph */
+.cta{display:flex;flex-wrap:wrap;gap:14px}                                          /* row of buttons */
+.soc{display:flex;gap:24px;margin:24px 0 0;font:700 14px var(--m)}                  /* LinkedIn / GitHub / Email links */
+.soc a{color:var(--p);padding:10px 0}
+.soc a:hover{color:var(--c)}
+.ph{aspect-ratio:4/5;border:2px dashed var(--p);background:var(--bg2);display:grid;place-items:center;text-align:center;padding:20px;color:var(--mut);font:400 13px/1.5 var(--m)}  /* photo placeholder */
+
+/* The network graph drawn behind the hero */
+.hero>.net{position:absolute;z-index:0;right:-60px;top:-10px;width:560px;max-width:100%;opacity:.8;pointer-events:none}
+.net path{fill:none;stroke:var(--p);stroke-width:1.5;stroke-dasharray:1;stroke-dashoffset:1;animation:dr 2.6s ease-out .2s forwards}  /* lines draw themselves */
+.net circle{fill:var(--bg);stroke:var(--c);stroke-width:2;opacity:0;animation:fi .5s ease-out forwards;animation-delay:calc(.3s + var(--i)*.22s)}  /* dots appear one by one */
+.net .c{stroke:var(--l)}
+@keyframes dr{to{stroke-dashoffset:0}}
+@keyframes fi{to{opacity:1}}
+
+/* ========== 7. TERMINAL BOX ========== */
+.tw{padding-block:0 56px}
+.term{max-width:640px;background:var(--bg2);border:2px solid var(--c);box-shadow:8px 8px 0 var(--p);padding:20px 24px;font:400 14px/2 var(--m)}
+.term small{display:block;color:var(--mut);font-size:12px;margin-bottom:6px}
+/* Typing effect: each line grows from width 0 to its number of characters (--n), one step per character */
+.ty{overflow:hidden;white-space:nowrap;width:0;animation:ty 1s steps(var(--n)) var(--d) forwards}
+.term:not(.go) .ty{animation-play-state:paused}   /* waits until the box is scrolled into view */
+@keyframes ty{to{width:calc(var(--n)*1ch)}}
+.k{color:var(--c)}                                  /* the "$ command" lines */
+.cu{color:var(--l);animation:bk 1s steps(1) infinite}  /* blinking cursor */
+@keyframes bk{50%{opacity:0}}
+
+/* ========== 8. TILTED PINK SKILLS BAND ========== */
+.bw{overflow:hidden;padding:28px 0}
+.band{background:var(--p);color:var(--on);transform:rotate(-1.5deg);margin:0 -30px;overflow:hidden;font:700 24px var(--d);padding:14px 0}
+.band .mq{animation-duration:70s}
+
+/* ========== 9. SECTION LAYOUT (title on the left, content on the right) ========== */
+.sec{display:grid;grid-template-columns:200px 1fr;gap:40px;padding-block:88px;border-top:2px dashed var(--bd)}
+.sec>h2{font:700 26px/1.2 var(--d);color:var(--p);text-transform:uppercase;margin:0;align-self:start;position:sticky;top:96px}
+.sec>h2::before{content:'// ';color:var(--c)}
+
+/* >>> PASTE PART 2 CSS HERE (new sections' styles go above the lines below) <<< */
+/* ========== 10. SKILLS ========== */
+/* Chips = the small tagged boxes for each skill */
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0}
+.chips li{font:400 13px var(--m);padding:5px 10px;border:1px solid var(--bd);color:var(--c)}
+
+/* Each skill group is one row: category name on the left, chips on the right */
+.sk>div{display:grid;grid-template-columns:190px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--bd)}
+.sk>div:first-child{border-top:0;padding-top:0}   /* no line above the first row */
+dt{font-weight:700;font-size:16px;color:var(--l)} /* category name */
+dd{margin:0}
+/* ========== 11. EXPERIENCE AND EDUCATION (timeline) ========== */
+h3{font-size:24px;font-weight:700;line-height:1.25;margin:0 0 8px}   /* job or degree title */
+.tl{position:relative;padding-left:32px;border-left:2px solid var(--c)}   /* vertical cyan line */
+.tl::before{content:'';position:absolute;left:-8px;top:6px;width:14px;height:14px;background:var(--l)}  /* lime square on the line */
+.tm{font:700 14px var(--m);color:var(--p);margin-bottom:6px}   /* dates */
+.co{color:var(--mut);margin:0 0 18px}                           /* company or school name */
+.co a{color:var(--l);text-decoration:underline;text-underline-offset:4px}   /* lime underlined link */
+.co a:hover{color:var(--c)}                                                  /* turns cyan on hover */
+ul.b{padding-left:20px;margin:0}                                /* bullet list */
+ul.b li{margin-bottom:8px}
+.tl .chips{margin-top:18px}                                     /* space above the tool tags */
+.tl + .tl{margin-top:36px}                                      /* gap between education entries */
+/* ========== 12. RESEARCH AND PUBLICATIONS ========== */
+.rp{border:2px solid var(--p);box-shadow:8px 8px 0 var(--c);background:var(--bg2);padding:28px;margin-bottom:36px}   /* every paper card: pink border, cyan shadow */
+.rp h3{font-size:22px}
+.bd{display:inline-block;font:700 13px var(--m);padding:5px 12px;background:var(--l);color:var(--on);margin-bottom:14px}   /* status badge: accepted / published */
+.bd.s{background:transparent;color:var(--c);border:1px solid var(--c)}                  /* status badge: submitted */
+.rp dl{display:grid;grid-template-columns:110px 1fr;gap:8px 20px;margin:16px 0}
+.rp dt{font:400 13px var(--m);color:var(--mut)}
+.rp dd{color:var(--tx)}
+.rp dd a{color:var(--l);text-decoration:underline;text-underline-offset:4px}            /* venue and DOI links */
+.rp dd a:hover{color:var(--c)}
+details{margin:16px 0;border-top:1px solid var(--bd);padding-top:12px}                  /* the abstract toggle */
+summary{cursor:pointer;font:700 14px var(--m);color:var(--l);padding:6px 0}
+details p{color:var(--mut);margin:12px 0 0}
+.rp .chips{margin-top:16px}
+
+/* ========== MOBILE RULES FOR THIS PART (screens narrower than 820px) ========== */
+@media(max-width:820px){
+  .hero{grid-template-columns:1fr;padding-block:56px}   /* stack text and photo */
+  .ph{max-width:240px}
+  .hero>.net{opacity:.3;right:-120px}
+  .sec{grid-template-columns:1fr;gap:24px;padding-block:64px}
+  .sec>h2{position:static}
+  .lg{display:none}                                      /* hide name in the top bar on small screens */
+  .band{font-size:18px}
+    .sk>div{grid-template-columns:1fr;gap:8px}   /* stack category name above its chips on phones */
+      .rp dl{grid-template-columns:1fr;gap:4px}   /* stack labels above values on phones */
+  .rp{padding:22px}
+}
+/* Turn off all animation for people who prefer reduced motion */
+@media(prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}.ty{width:auto}.net path{stroke-dashoffset:0}.net circle{opacity:1}html{scroll-behavior:auto}}
+</style>
+
+<!-- Restores the theme you chose last time (runs before the page shows, so there is no flash) -->
+<script>try{var s=localStorage.getItem('theme');if(s)document.documentElement.dataset.theme=s}catch(e){}</script>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ===== TOP TICKER ===== -->
+<!-- Scrolling strip of my interests. Two identical spans make the loop seamless. -->
+<!-- To change the words, edit BOTH spans the same way. Keep the " /// " between items. -->
+<div class="mqw" aria-hidden="true"><div class="mq">
+<span>DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// </span>
+<span>DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// </span>
+</div></div>
+
+<!-- ===== HEADER: name, menu links, theme button ===== -->
+<header><div class="w">
+<a class="lg" href="#top">Sudipta Niloy Sarker</a>
+<nav aria-label="Primary">
+  <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#projects">Projects</a><a href="#research">Research</a><a href="#contact">Contact</a>
+</nav>
+<button id="tt" type="button" aria-label="Switch between dark and light theme">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+</button>
+</div></header>
+
+<main id="main">
+
+<!-- ===== HERO ===== -->
+<section id="top" class="hero w" aria-label="Introduction">
+
+  <!-- Background network graph: one path for the lines, circles for the dots -->
+  <svg class="net" viewBox="0 0 400 400" aria-hidden="true">
+    <path pathLength="1" d="M60 300L130 210L90 120L200 90L220 200L130 210M220 200L180 310L60 300M200 90L300 150L220 200M300 150L330 260L220 200M330 260L280 340L180 310M300 150L350 60"/>
+    <circle cx="60" cy="300" r="7" style="--i:0"/><circle class="c" cx="130" cy="210" r="7" style="--i:1"/><circle cx="90" cy="120" r="7" style="--i:2"/><circle cx="200" cy="90" r="7" style="--i:3"/><circle class="c" cx="220" cy="200" r="9" style="--i:4"/><circle cx="180" cy="310" r="7" style="--i:5"/><circle cx="300" cy="150" r="7" style="--i:6"/><circle class="c" cx="330" cy="260" r="7" style="--i:7"/><circle cx="280" cy="340" r="7" style="--i:8"/><circle cx="350" cy="60" r="7" style="--i:9"/>
+  </svg>
+
+  <div>
+    <h1>Sudipta Niloy Sarker</h1>
+
+    <!-- Headline under the name. Edit the words between the | separators -->
+    <p class="hl">Computer Science Graduate | AI/ML Engineering | Data Analyst | Network Engineering</p>
+
+    <!-- Short intro -->
+    <p class="in">I’m a Computer Science and Engineering graduate from AIUB, looking for roles in AI/ML engineering, Data Analyst and Business Analyst . I build machine learning pipelines and have hands-on experience in network engineering.</p>
+
+    <!-- Buttons -->
+    <div class="cta">
+      <a class="btn pri pulse" href="#projects">Explore My Work</a>
+      <!-- resume.pdf must be in the same folder as this file -->
+      <a class="btn" href="resume.pdf" download>Download Resume</a>
+    </div>
+
+    <!-- Social links -->
+    <p class="soc">
+      <a href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a>   <!-- replace YOUR-PROFILE when you have your link -->
+      <a href="https://github.com/SudiptaNiloySarker">GitHub</a>
+      <a href="mailto:sudiptaniloysarker26@gmail.com">Email</a>
+    </p>
+  </div>
+
+  <!-- My photo. If your file has a different name (for example profile.png), change it here -->
+  <img src="profile.jpg" alt="Portrait of Sudipta Niloy Sarker" width="400" height="500"
+       style="width:100%;max-width:340px;aspect-ratio:4/5;object-fit:cover;border:2px solid var(--p);box-shadow:8px 8px 0 var(--c)">
+</section>
+
+<!-- ===== TERMINAL ===== -->
+<!-- --n = number of characters in the line (spaces count), --d = delay before it starts typing -->
+<!-- Lines with class "ty k" are the cyan "$ command" lines; plain "ty" lines are the answers -->
+<section class="w tw" aria-label="About me in a terminal"><div class="term"><small>terminal</small>
+
+<!-- Who I am -->
+<div class="ty k" style="--n:8;--d:.3s">$ whoami</div>
+<div class="ty" style="--n:20;--d:1.5s">Sudipta Niloy Sarker</div>
+<div class="ty" style="--n:12;--d:2.7s">CSE graduate</div>
+
+<!-- What I'm interested in -->
+<div class="ty k" style="--n:19;--d:3.9s">$ cat interests.txt</div>
+<div class="ty" style="--n:25;--d:5.1s">Data Science, Data Mining</div>
+<div class="ty" style="--n:24;--d:6.3s">NLP, GNN, Explainable AI</div>
+
+<!-- What I'm looking for -->
+<div class="ty k" style="--n:21;--d:7.5s">$ cat looking_for.txt</div>
+<div class="ty" style="--n:17;--d:8.7s">AI/ML Engineering</div>
+<div class="ty" style="--n:14;--d:9.9s">Data Analyst</div>
+<div class="ty" style="--n:17;--d:11.1s">Business Analyst</div>
+
+<!-- Last line + blinking cursor -->
+<div class="ty k" style="--n:14;--d:12.3s">$ ./Hire_me.sh</div>
+<div><span class="cu">█</span></div>
+</div></section>
+
+<!-- ===== TILTED PINK BAND ===== -->
+<!-- Same words as the top ticker. Edit BOTH spans the same way and keep the " /// " between items. -->
+<div class="bw" aria-hidden="true"><div class="band"><div class="mq">
+<span>DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// </span>
+<span>DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// DATA SCIENCE /// DATA MINING /// NATURAL LANGUAGE PROCESSING /// GRAPH NEURAL NETWORKS /// AI AND ML ENGINEERING /// EXPLAINABLE AI /// </span>
+</div></div></div>
+
+<!-- ===== ABOUT ===== -->
+<!-- Paragraph 1: who I am and what I know. Paragraph 2: what I'm looking for and my network background -->
+<section id="about" class="sec w" aria-labelledby="h-about">
+  <h2 id="h-about">About</h2>
+  <div>
+    <!-- 1) Who I am and what I know -->
+    <p>I’m a Computer Science and Engineering graduate who likes turning raw data into answers people can act on. My interests lie in Graph neural networks, Natural language processing and Explainable AI, and I’ve built Machine learning pipelines that run from data preparation through to evaluation.</p>
+
+    <!-- 2) What I'm looking for, plus network background -->
+    <p>I’m looking for roles in AI/ML engineering, Data Analyst or Business Analyst. Having also worked in a live ISP network environment, I’m comfortable around real infrastructure and bring a practical, systems-level view to data problems.</p>
+  </div>
+</section>
+
+<!-- >>> PASTE PART 2 HTML HERE (Skills, Experience, ...) <<< -->
+<!-- ===== SKILLS ===== -->
+<!-- Each <div> is one category. To add a skill, copy one <li>Skill</li> line inside the right list. -->
+<section id="skills" class="sec w" aria-labelledby="h-skills">
+  <h2 id="h-skills">Technical skills</h2>
+  <dl class="sk">
+
+    <!-- Languages you write code in -->
+    <div><dt>Programming Languages</dt><dd><ul class="chips">
+      <li>Python</li><li>Java</li><li>C</li><li>C++</li><li>R</li><li>SQL</li>
+    </ul></dd></div>
+
+    <!-- Concepts and methods -->
+    <div><dt>Machine learning and Data science</dt><dd><ul class="chips">
+      <li>Machine Learning</li><li>Data Mining</li><li>Exploratory Data Analysis</li><li>Model Evaluation</li><li>Explainable AI</li>
+    </ul></dd></div>
+
+    <div><dt>Deep learning and NLP</dt><dd><ul class="chips">
+      <li>Natural Language Processing</li><li>Large Language Models</li><li>Transformer Models</li><li>Graph Neural Networks</li>
+    </ul></dd></div>
+
+    <!-- Libraries you use in code -->
+    <div><dt>Libraries and Frameworks</dt><dd><ul class="chips">
+      <li>PyTorch</li><li>Scikit-learn</li><li>Pandas</li><li>NumPy</li><li>SHAP</li>
+    </ul></dd></div>
+
+    <!-- Software you work in -->
+    <div><dt>Databases and Tools</dt><dd><ul class="chips">
+      <li>Oracle</li><li>Jupyter Notebook</li><li>Git</li><li>GitHub</li><li>VS Code</li><li>Microsoft Excel</li>
+    </ul></dd></div>
+
+    <div><dt>Networking and IT Infrastructure</dt><dd><ul class="chips">
+      <li>MikroTik RouterOS</li><li>TCP/IP</li><li>DNS</li><li>DHCP</li><li>VLAN</li><li>IP Provisioning</li><li>Bandwidth Management</li><li>Network Monitoring (Nagios)</li><li>Network Fault Isolation</li><li>Windows and Linux Troubleshooting</li>
+    </ul></dd></div>
+
+  </dl>
+
+</section>
+<!-- ===== EXPERIENCE ===== -->
+<!-- To add another job later, copy the whole <article> and put it below this one. -->
+<section id="experience" class="sec w" aria-labelledby="h-exp">
+  <h2 id="h-exp">Experience</h2>
+
+  <article class="tl">
+    <div class="tm">June 2026 – August 2026</div>
+    <h3>Junior Network Engineer (Intern)</h3>
+    <p class="co"><a href="https://infolink.com.bd/" target="_blank" rel="noopener">InfoLink Limited</a>, Dhaka, Bangladesh</p>
+
+    <!-- One-line summary -->
+    <p>Hands-on ISP internship covering customer support, MikroTik configuration and network monitoring.</p>
+
+    <ul class="b">
+      <li>Provided remote and on-site technical support, managing support tickets and coordinating technician dispatch when needed.</li>
+      <li>Worked with MikroTik routers on IP configuration, VLANs and bandwidth queues.</li>
+      <li>Monitored network conditions and alerts using Nagios.</li>
+      <li>Traced MAC addresses through a VSOL EPON OLT.</li>
+      <li>Assisted with ONU and router installation and troubleshooting, including RJ45 connectors and UTP cabling.</li>
+      <li>Assisted with NVR/CCTV networking and static IP configuration.</li>
+    </ul>
+
+    <!-- Tool tags -->
+    <ul class="chips">
+      <li>MikroTik RouterOS</li><li>Nagios</li><li>VSOL EPON OLT</li><li>VLAN</li><li>TCP/IP</li><li>IP Configuration</li>
+    </ul>
+  </article>
+</section>
+<!-- ===== EDUCATION ===== -->
+<!-- The entries must sit inside ONE <div>, so they all stay in the right-hand column -->
+<section id="education" class="sec w" aria-labelledby="h-edu">
+  <h2 id="h-edu">Education</h2>
+
+  <div>
+    <!-- University -->
+    <article class="tl">
+      <div class="tm">2022 – 2026</div>
+      <h3>Bachelor of Science in Computer Science and Engineering</h3>
+      <p class="co"><a href="https://www.aiub.edu/" target="_blank" rel="noopener">American International University-Bangladesh (AIUB)</a></p>
+      <p>Major: Information Systems</p>
+    </article>
+
+    <!-- College -->
+    <article class="tl">
+      <div class="tm">2018 – 2020</div>
+      <h3>Higher Secondary Certificate (Science)</h3>
+      <p class="co">Shaheed Bulbul Government College, Pabna, Bangladesh</p>
+    </article>
+
+    <!-- School -->
+    <article class="tl">
+      <div class="tm">2010 – 2018</div>
+      <h3>Secondary School Certificate (Science)</h3>
+      <p class="co"><a href="https://kushtiazillaschool.edu.bd/" target="_blank" rel="noopener">Kushtia Zilla School</a>, Kushtia, Bangladesh</p>
+    </article>
+  </div>
+</section>
+<!-- ===== RESEARCH AND PUBLICATIONS ===== -->
+<!-- Each <article class="rp"> is one paper. The abstract opens when you click "Read abstract". -->
+<!-- Badge classes: "bd" = accepted or published (lime), "bd s" = submitted (outlined). -->
+<!-- To reorder papers, move a whole <article> block up or down. -->
+<section id="research" class="sec w" aria-labelledby="h-rs">
+  <h2 id="h-rs">Research and publications</h2>
+
+  <div>
+
+    <!-- Paper 1: accepted, journal -->
+    <article class="rp">
+      <span class="bd">Accepted · Journal</span>
+      <h3>Do Heterogeneous Graph Neural Networks Improve Cross-Cohort Glioma Grading? A TCGA-CGGA Benchmark with Graph Ablation and Explainability</h3>
+      <dl>
+        <dt>Journal</dt><dd><a href="https://link.springer.com/journal/13721" target="_blank" rel="noopener">Network Modeling Analysis in Health Informatics and Bioinformatics</a></dd>
+        <dt>Publisher</dt><dd>Springer Nature</dd>
+        <dt>DOI</dt><dd>[to be added]</dd>
+      </dl>
+      <details>
+        <summary>Read abstract</summary>
+        <p>Glioma grading models often achieve strong internal performance but fail to maintain accuracy across independent cohorts, limiting their clinical reliability. This study evaluated whether heterogeneous graph neural networks provide predictive or interpretability advantages for binary glioma grade classification using genomic mutation and clinical features. We used 837 TCGA patients for training, validation, and internal testing, and 284 CGGA patients as an independent external cohort. A heterogeneous graph was constructed using patient and gene nodes connected through mutation-based gene-patient edges, patient-patient topology, and gene-gene co-occurrence edges. Seven heterogeneous GNN architectures were evaluated across four class-balancing strategies, including no balancing, SMOTE, CTGAN, and random oversampling. Hyperparameters were optimized using Optuna, and performance was compared against tuned tabular baselines using AUC-ROC, F1-score, grade-stratified recall, bootstrap confidence intervals, DeLong testing, and McNemar analysis. MOGAT with CTGAN achieved the highest TCGA test AUC of 0.9203, while RGCN with CTGAN achieved the highest CGGA AUC of 0.7853. However, tuned tabular baselines matched or exceeded GNN performance, with MLP reaching 0.9307 AUC on TCGA and Random Forest reaching 0.7960 AUC on CGGA. Edge-type ablation showed that gene-patient mutation edges carried most of the discriminative signal, while patient-patient topology could reduce external transfer. Explainability analyses identified IDH1, IDH2, and age at diagnosis as major predictors, consistent with established glioma biology. These findings suggest that heterogeneous GNNs provide useful structural interpretability but no consistent predictive advantage over strong tabular models for low-dimensional glioma genomic panels. Further multi-cohort validation, calibration analysis, and prospective evaluation are required before clinical deployment.</p>
+      </details>
+      <ul class="chips"><li>Glioma grading</li><li>Heterogeneous graph neural networks</li><li>Cross-cohort validation</li><li>Explainable AI</li><li>Graph ablation</li><li>Biomedical machine learning</li></ul>
+    </article>
+
+    <!-- Paper 2: accepted, conference -->
+    <article class="rp">
+      <span class="bd">Accepted · Conference</span>
+      <h3>TeaBD-HybridNet: Maximizing Pretrained Knowledge Transfer in a Dual-Branch CNN-ViT Architecture for Tea Leaf Disease Classification</h3>
+      <dl>
+        <dt>Conference</dt><dd><a href="https://csa.ru.ac.bd/icrpset/2026/" target="_blank" rel="noopener">ICRPSET 2026: International Conference on Recent Progresses in Science, Engineering and Technology</a></dd>
+        <dt>Host</dt><dd>University of Rajshahi, Bangladesh</dd>
+        <dt>DOI</dt><dd>[to be added]</dd>
+      </dl>
+      <details>
+        <summary>Read abstract</summary>
+        <p>Tea leaf disease and pest identification are important for crop management. Existing hybrid CNN–Vision Transformer (ViT) approaches often perform worse than fully pretrained single-backbone models because their large randomly initialized fusion components remain undertrained on small agricultural datasets. We propose TeaBD-HybridNet, a dual-branch architecture that retains as many pretrained parameters as possible. It transplants the complete 12-block pretrained ViT depth alongside a fully pretrained CNN backbone. The two branches are fused through simple channel concatenation and a lightweight classification head. We evaluated it on the teaLeafBD dataset (5,276 images, seven classes) against ten baselines drawn from pure CNN, pure ViT, existing CNN–ViT hybrid, and state-space model families. TeaBD-HybridNet achieved 95.11% accuracy and 94.17% macro-F1. It exceeds the strongest baseline (Swin-Tiny) by 0.65 points and the strongest hybrid baseline (MobileViT-S) by 2.16 points. We also measured robustness against five real-world image corruptions and three white-box adversarial attacks and applied adversarial training as a defense. The results support the design principle of the model. Minimizing randomly initialized capacity while maximizing transferred pretrained knowledge is an effective strategy for hybrid architectures on limited agricultural datasets.</p>
+      </details>
+      <ul class="chips"><li>Tea leaf disease classification</li><li>Hybrid CNN-ViT</li><li>Transfer learning</li><li>Vision transformer</li><li>Adversarial robustness</li><li>Plant disease detection</li></ul>
+    </article>
+
+    <!-- Paper 3: submitted, journal -->
+    <article class="rp">
+      <span class="bd s">Submitted · Journal</span>
+      <h3>Heterogeneous Lesion Graph Network for Diabetic Retinopathy Grading: Modeling Spatial Lesion Interactions from Fundus Images</h3>
+      <dl>
+        <dt>Journal</dt><dd><a href="https://journal.uthm.edu.my/index.php/ijie" target="_blank" rel="noopener">International Journal of Integrated Engineering (IJIE)</a></dd>
+        <dt>Status</dt><dd>Under review</dd>
+      </dl>
+      <details>
+        <summary>Read abstract</summary>
+        <p>Current automated Diabetic Retinopathy (DR) grading systems use CNNs that discard spatial relationships between retinal lesions. We propose the Heterogeneous Lesion Graph Network (HGLN), which models four lesion types (Microaneurysms, Haemorrhages, Hard Exudates, and Soft Exudates) as distinct nodes in a spatial proximity graph with 16 typed edge relations, processed via Graph Attention Networks v2 (GATv2). On the IDRiD dataset (516 images), HGLN achieved a Quadratic Weighted Kappa (QWK) of 0.853, outperforming a homogeneous GNN baseline by 6.4%. On external validation (APTOS 2019, 3,662 images), HGLN achieved a QWK of 0.751, surpassing ResNet-50 (0.722). Ablation studies confirm that heterogeneous typing and spatial topology are critical, while attention weight visualizations provide clinically auditable, lesion-level interpretability.</p>
+      </details>
+      <ul class="chips"><li>Diabetic retinopathy</li><li>Graph neural networks</li><li>Lesion segmentation</li><li>Fundus image analysis</li><li>Explainable AI</li><li>GATv2</li></ul>
+    </article>
+
+    <!-- Paper 4: published, conference (last) -->
+    <article class="rp">
+      <span class="bd">Published · Conference</span>
+      <h3>Towards Sustainable Transportation: Hybrid Vehicles as a Sustainable Alternative to Traditional Fuel Only Vehicles</h3>
+      <dl>
+        <dt>Conference</dt><dd><a href="https://index.ieomsociety.org/index.cfm/item/55354" target="_blank" rel="noopener">7th IEOM Bangladesh International Conference on Industrial Engineering and Operations Management</a></dd>
+        <dt>Published</dt><dd>December 2024, IEOM Society International</dd>
+        <dt>DOI</dt><dd><a href="https://doi.org/10.46254/BA07.20240184" target="_blank" rel="noopener">10.46254/BA07.20240184</a></dd>
+      </dl>
+      <details>
+        <summary>Read abstract</summary>
+        <p>Use of sustainable hybrid electric vehicles (HEVs) has become essential to reduce fuel dependency as fossil fuels are limited for us. The mentioned vehicles are new energy vehicles, which are hybrid electric vehicles/plug-in electric vehicles (PHEVs), electric batteries (BEVs), and fuel cell vehicles (FCVs). The purpose of this paper is the development of more efficient hybrid electric vehicles and a definite solution to current mobility issues. Identification of environmental, economic, and technological impacts as well as potential for sustainability in using hybrid vehicles instead of the traditional fuel-powered vehicles. This is an exploratory study of the exploration by dependence on fossil fuels and increase in energy efficiency through hybrid technology with their feasibility, market acceptance, and all progress towards global sustainability goals. The research conducted a quantitative research method for collecting data based on an online survey of candidates across Bangladesh. The survey was conducted online, focusing on diverse demographics to ensure inclusivity across age, gender and income levels. The survey contains both closed and open-ended types of questions on attitudes, public awareness, and fondness concerning hybrid vehicles. The collected data was analyzed to recognize the trends and key factors influencing the adoption of hybrid vehicles in Bangladesh. The study shows that around 70%-80% respondents are expected to consider hybrid vehicles as advance in transportation alternation. Furthermore 70%-75% may favor them over traditional fuel vehicles. 60%-65% people are expected to show interest to invest in premium models because of fuel efficiency benefits. The research shows that the majority of the respondents have support for hybrid vehicles as a sustainable, practical alternative to traditional fuel-powered vehicles. Respondents realize the advantages such as societal impact, fuel efficiency and economic savings. As well as promotions, government aid, and raising awareness can speed up the adoption of hybrid vehicles.</p>
+      </details>
+      <ul class="chips"><li>Hybrid vehicles</li><li>Sustainability</li><li>Fuel efficiency</li><li>Sustainable transportation</li><li>Survey-based study</li></ul>
+    </article>
+
+  </div>
+</section>
+</main>
+
+<!-- >>> PASTE FOOTER HTML HERE (comes after the Contact part) <<< -->
+
+<script>
+/* Theme button: switches dark/light and remembers your choice */
+var d=document.documentElement;
+document.getElementById('tt').onclick=function(){
+  var t=d.dataset.theme==='dark'?'light':'dark';
+  d.dataset.theme=t;
+  try{localStorage.setItem('theme',t)}catch(e){}
+};
+
+/* Terminal starts typing only when it scrolls into view */
+var tm=document.querySelector('.term');
+if('IntersectionObserver' in window){
+  new IntersectionObserver(function(e,o){
+    if(e[0].isIntersecting){tm.classList.add('go');o.disconnect()}
+  }).observe(tm);
+}else{tm.classList.add('go')}
+
+/* >>> PASTE LATER JS HERE (footer year and contact form) <<< */
+</script>
+</body>
+</html>
