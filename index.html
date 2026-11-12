@@ -108,22 +108,48 @@ h1{font-size:clamp(44px,8.4vw,104px);font-weight:700;letter-spacing:-.03em;line-
 @keyframes fi{to{opacity:1}}
 
 
-/* ========== 7. TERMINAL BOX ========== */
+/* ========== 7 TERMINAL BOX ========== */
 .tw{padding-block:0 56px}
-.term{max-width:640px;background:var(--bg2);border:2px solid var(--c);box-shadow:8px 8px 0 var(--p);padding:20px 24px;font:400 14px/2 var(--m)}
-.term small{display:block;color:var(--mut);font-size:12px;margin-bottom:6px}
 
-.ty{overflow:hidden;white-space:nowrap;width:0;max-width:100%;animation:ty 1s steps(var(--n)) var(--d) forwards}
-.term:not(.go) .ty{animation-play-state:paused}
+.term{
+    max-width:640px;
+    background:var(--bg2);
+    border:2px solid var(--c);
+    box-shadow:8px 8px 0 var(--p);
+    padding:20px 24px;
+    font:400 14px/2 var(--m);
+}
 
-@keyframes ty{
-  from{width:0}
-  to{width:calc(var(--n)*1ch)}
+.term small{
+    display:block;
+    color:var(--mut);
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+.ty{
+    display:block;
+    overflow:hidden;
+    white-space:nowrap;
+    width:0;
+    animation:typing 1s steps(var(--n)) var(--d) forwards;
+}
+
+@keyframes typing{
+    from{width:0}
+    to{width:calc(var(--n)*1ch)}
 }
 
 .k{color:var(--c)}
-.cu{color:var(--l);animation:bk 1s steps(1) infinite}
-@keyframes bk{50%{opacity:0}}
+
+.cu{
+    color:var(--l);
+    animation:bk 1s steps(1) infinite;
+}
+
+@keyframes bk{
+    50%{opacity:0}
+}
 
 
 /* ========== 8. TILTED PINK SKILLS BAND ========== */
@@ -573,22 +599,15 @@ e.preventDefault();st.textContent='Sending…';
 fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}}).then(function(r){if(r.ok){f.reset();st.textContent='Message sent. Thank you.'}else{st.textContent='Sending failed. Please email me directly.'}}).catch(function(){st.textContent='Sending failed. Please email me directly.'});
 });
 // Terminal typing animation
-var tm = document.querySelector('.term');
-
-if (tm) {
-    if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries, observer) {
-            if (entries[0].isIntersecting) {
-                tm.classList.add('go');
-                observer.disconnect();
-            }
-        });
-
-        observer.observe(tm);
-    } else {
-        tm.classList.add('go');
-    }
-}
+var tm=document.querySelector('.term');
+if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e,o){
+        if(e[0].isIntersecting){
+            tm.classList.add('go');
+            o.disconnect()
+        }
+    }).observe(tm)
+}else tm.classList.add('go');
 
 /* >>> PASTE LATER JS HERE (footer year and contact form) <<< */
 </script>
