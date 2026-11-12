@@ -545,11 +545,23 @@ details p{color:var(--mut);margin:12px 0 0}
     </article>
   </div>
 </section>
+<section id="contact" class="sec w" aria-labelledby="h-ct"><h2 id="h-ct">Contact</h2><div class="ct">
+<dl><div><dt>Email</dt><dd><a href="mailto:sudiptaniloysarker26@gmail.com">sudiptaniloysarker26@gmail.com</a></dd></div><div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/YOUR-PROFILE">linkedin.com/in/YOUR-PROFILE</a></dd></div><div><dt>GitHub</dt><dd><a href="https://github.com/SudiptaNiloySarker">github.com/SudiptaNiloySarker</a></dd></div><div><dt>Phone</dt><dd><a href="tel:+8801730699773">01730699773</a></dd></div><div><dt>Location</dt><dd>Dhaka, Bangladesh</dd></div></dl>
+<form id="cf" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+<label>Name<input name="name" autocomplete="name" required></label>
+<label>Email<input name="email" type="email" autocomplete="email" required></label>
+<label>Subject<input name="subject" required></label>
+<label>Message<textarea name="message" required></textarea></label>
+<button class="btn pri" type="submit">Send message</button>
+<p id="st" role="status"></p>
+</form></div></section>
 </main>
+<!-- >>> PASTE FOOTER HTML HERE (comes after the Contact part) <<< -->
 <footer><div class="w"><div><b>Sudipta Niloy Sarker</b><br>Building intelligent systems and dependable networks.</div>
 <nav aria-label="Social"><a href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a><a href="https://github.com/SudiptaNiloySarker">GitHub</a><a href="mailto:sudiptaniloysarker26@gmail.com">Email</a></nav>
 <div>© <span id="y"></span> Sudipta Niloy Sarker</div></div></footer>
 <script>
+  
 var d=document.documentElement;
 document.getElementById('tt').onclick=function(){var t=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}};
 document.getElementById('y').textContent=new Date().getFullYear();
@@ -561,29 +573,6 @@ e.preventDefault();st.textContent='Sending…';
 fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}}).then(function(r){if(r.ok){f.reset();st.textContent='Message sent. Thank you.'}else{st.textContent='Sending failed. Please email me directly.'}}).catch(function(){st.textContent='Sending failed. Please email me directly.'});
 });
 var tm=document.querySelector('.term');if('IntersectionObserver' in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){tm.classList.add('go');o.disconnect()}}).observe(tm)}else tm.classList.add('go');
-</script>
-</body>
-</html>
-<!-- >>> PASTE FOOTER HTML HERE (comes after the Contact part) <<< -->
-<footer><div class="w"><div><b>Sudipta Niloy Sarker</b><br>Building intelligent systems and dependable networks.</div>
-<nav aria-label="Social"><a href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a><a href="https://github.com/SudiptaNiloySarker">GitHub</a><a href="mailto:sudiptaniloysarker26@gmail.com">Email</a></nav>
-<div>© <span id="y"></span> Sudipta Niloy Sarker</div></div></footer>
-<script>
-/* Theme button: switches dark/light and remembers your choice */
-var d=document.documentElement;
-document.getElementById('tt').onclick=function(){
-  var t=d.dataset.theme==='dark'?'light':'dark';
-  d.dataset.theme=t;
-  try{localStorage.setItem('theme',t)}catch(e){}
-};
-
-/* Terminal starts typing only when it scrolls into view */
-var tm=document.querySelector('.term');
-if('IntersectionObserver' in window){
-  new IntersectionObserver(function(e,o){
-    if(e[0].isIntersecting){tm.classList.add('go');o.disconnect()}
-  }).observe(tm);
-}else{tm.classList.add('go')}
 
 /* >>> PASTE LATER JS HERE (footer year and contact form) <<< */
 </script>
