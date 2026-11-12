@@ -107,17 +107,24 @@ h1{font-size:clamp(44px,8.4vw,104px);font-weight:700;letter-spacing:-.03em;line-
 @keyframes dr{to{stroke-dashoffset:0}}
 @keyframes fi{to{opacity:1}}
 
+
 /* ========== 7. TERMINAL BOX ========== */
 .tw{padding-block:0 56px}
 .term{max-width:640px;background:var(--bg2);border:2px solid var(--c);box-shadow:8px 8px 0 var(--p);padding:20px 24px;font:400 14px/2 var(--m)}
 .term small{display:block;color:var(--mut);font-size:12px;margin-bottom:6px}
-/* Typing effect: each line grows from width 0 to its number of characters (--n), one step per character */
-.ty{overflow:hidden;white-space:nowrap;width:0;animation:ty 1s steps(var(--n)) var(--d) forwards}
-.term:not(.go) .ty{animation-play-state:paused}   /* waits until the box is scrolled into view */
-@keyframes ty{to{width:calc(var(--n)*1ch)}}
-.k{color:var(--c)}                                  /* the "$ command" lines */
-.cu{color:var(--l);animation:bk 1s steps(1) infinite}  /* blinking cursor */
+
+.ty{overflow:hidden;white-space:nowrap;width:0;max-width:100%;animation:ty 1s steps(var(--n)) var(--d) forwards}
+.term:not(.go) .ty{animation-play-state:paused}
+
+@keyframes ty{
+  from{width:0}
+  to{width:calc(var(--n)*1ch)}
+}
+
+.k{color:var(--c)}
+.cu{color:var(--l);animation:bk 1s steps(1) infinite}
 @keyframes bk{50%{opacity:0}}
+
 
 /* ========== 8. TILTED PINK SKILLS BAND ========== */
 .bw{overflow:hidden;padding:28px 0}
