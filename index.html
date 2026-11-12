@@ -547,7 +547,24 @@ details p{color:var(--mut);margin:12px 0 0}
   </div>
 </section>
 </main>
-
+<footer><div class="w"><div><b>Sudipta Niloy Sarker</b><br>Building intelligent systems and dependable networks.</div>
+<nav aria-label="Social"><a href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a><a href="https://github.com/SudiptaNiloySarker">GitHub</a><a href="mailto:sudiptaniloysarker26@gmail.com">Email</a></nav>
+<div>© <span id="y"></span> Sudipta Niloy Sarker</div></div></footer>
+<script>
+var d=document.documentElement;
+document.getElementById('tt').onclick=function(){var t=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}};
+document.getElementById('y').textContent=new Date().getFullYear();
+var f=document.getElementById('cf'),st=document.getElementById('st');
+if(f.action.indexOf('YOUR_FORM_ID')>-1)st.textContent='Not configured yet: add your form endpoint (for example a Formspree ID) to this form before publishing.';
+f.addEventListener('submit',function(e){
+if(f.action.indexOf('YOUR_FORM_ID')>-1){e.preventDefault();st.textContent='This form can’t send messages until an endpoint is added. Please email me directly for now.';return}
+e.preventDefault();st.textContent='Sending…';
+fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}}).then(function(r){if(r.ok){f.reset();st.textContent='Message sent. Thank you.'}else{st.textContent='Sending failed. Please email me directly.'}}).catch(function(){st.textContent='Sending failed. Please email me directly.'});
+});
+var tm=document.querySelector('.term');if('IntersectionObserver' in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){tm.classList.add('go');o.disconnect()}}).observe(tm)}else tm.classList.add('go');
+</script>
+</body>
+</html>
 <!-- >>> PASTE FOOTER HTML HERE (comes after the Contact part) <<< -->
 
 <script>
