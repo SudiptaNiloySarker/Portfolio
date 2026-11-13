@@ -604,12 +604,12 @@ footer nav{margin:0}
     <dl>
       <div><dt>Email</dt><dd><a href="mailto:sudiptaniloysarker26@gmail.com">sudiptaniloysarker26@gmail.com</a></dd></div>
       <div><dt>Phone</dt><dd><a href="tel:+8801730699773">01730699773</a></dd></div>
-      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/sudipta-niloy-sarker-5555a2357?utm_source=share_via&utm_content=profile&utm_medium=member_android%22%3ESudipta">linkedin.com/in/YOUR-PROFILE</a></dd></div>  <!-- replace YOUR-PROFILE -->
+      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/sudipta-niloy-sarker-5555a2357" target="_blank" rel="noopener">Sudipta Niloy Sarker</a></dd></div>
       <div><dt>GitHub</dt><dd><a href="https://github.com/SudiptaNiloySarker">github.com/SudiptaNiloySarker</a></dd></div>
       <div><dt>Location</dt><dd>Dhaka, Bangladesh</dd></div>
     </dl>
 
-    <!-- Right side: contact form. Replace YOUR_FORM_ID with your Formspree form ID (see notes below) -->
+    <!-- Right side: contact form. Replace YOUR_FORM_ID with your Formspree form ID -->
     <form id="cf" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
       <label>Name<input name="name" autocomplete="name" required></label>
       <label>Email<input name="email" type="email" autocomplete="email" required></label>
@@ -621,41 +621,19 @@ footer nav{margin:0}
   </div>
 </section>
 </main>
-<!-- >>> PASTE FOOTER HTML HERE (comes after the Contact part) <<< -->
+
 <!-- ===== FOOTER ===== -->
 <footer><div class="w">
   <div><b>Sudipta Niloy Sarker</b><br>AI/ML engineering, data analytics and network engineering.</div>
   <nav aria-label="Social">
-    <a href="https://www.linkedin.com/in/sudipta-niloy-sarker-5555a2357?utm_source=share_via&utm_content=profile&utm_medium=member_android%22%3ESudipta">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/sudipta-niloy-sarker-5555a2357" target="_blank" rel="noopener">LinkedIn</a>
     <a href="https://github.com/SudiptaNiloySarker">GitHub</a>
     <a href="mailto:sudiptaniloysarker26@gmail.com">Email</a>
   </nav>
-  <div>© <span id="y"></span> Sudipta Niloy Sarker</div>   <!-- the year fills in automatically -->
+  <div>© <span id="y"></span> Sudipta Niloy Sarker</div>
 </div></footer>
-  
-var d=document.documentElement;
-document.getElementById('tt').onclick=function(){var t=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=t;try{localStorage.setItem('theme',t)}catch(e){}};
-document.getElementById('y').textContent=new Date().getFullYear();
-var f=document.getElementById('cf'),st=document.getElementById('st');
-if(f.action.indexOf('YOUR_FORM_ID')>-1)st.textContent='Not configured yet: add your form endpoint (for example a Formspree ID) to this form before publishing.';
-f.addEventListener('submit',function(e){
-if(f.action.indexOf('YOUR_FORM_ID')>-1){e.preventDefault();st.textContent='This form can’t send messages until an endpoint is added. Please email me directly for now.';return}
-e.preventDefault();st.textContent='Sending…';
-fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}}).then(function(r){if(r.ok){f.reset();st.textContent='Message sent. Thank you.'}else{st.textContent='Sending failed. Please email me directly.'}}).catch(function(){st.textContent='Sending failed. Please email me directly.'});
-});
-// Terminal typing animation
-var tm=document.querySelector('.term');
-if('IntersectionObserver' in window){
-    new IntersectionObserver(function(e,o){
-        if(e[0].isIntersecting){
-            tm.classList.add('go');
-            o.disconnect()
-        }
-    }).observe(tm)
-}else tm.classList.add('go');
 
-/* >>> PASTE LATER JS HERE (footer year and contact form) <<< */
-  <script>
+<script>
 /* Theme button: switches dark/light and remembers your choice */
 var d=document.documentElement;
 document.getElementById('tt').onclick=function(){
@@ -690,4 +668,3 @@ f.addEventListener('submit',function(e){
 </script>
 </body>
 </html>
-
